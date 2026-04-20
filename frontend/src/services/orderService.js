@@ -9,3 +9,8 @@ export const fetchOrders = async (params) => {
   const { data } = await api.get("/orders", { params });
   return data;
 };
+
+export const fetchAdminOrders = async (params) => {
+  const { data } = await api.get("/admin/orders", { params });
+  return data;
+};

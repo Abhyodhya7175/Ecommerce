@@ -6,6 +6,7 @@ import org.springframework.data.domain.Page;
 public interface ProductService {
     Page<ProductDto> getProducts(String search, int page, int size, String sortBy);
     ProductDto getProductById(Long id);
+    Page<ProductDto> getAdminProducts(String search, Boolean approved, int page, int size, String sortBy, String sortDir);
     Page<ProductDto> getVendorProducts(String email, int page, int size, String sortBy);
     ProductDto createVendorProduct(String email, ProductDto request);
     ProductDto updateVendorProduct(String email, Long id, ProductDto request);

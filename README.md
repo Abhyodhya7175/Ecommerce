@@ -15,6 +15,52 @@ A full-stack marketplace built with **Spring Boot** (backend) and **React** (fro
 
 ---
 
+<<<<<<< HEAD
+=======
+## Architecture
+
+### High-Level Flow
+
+```text
+[ React Frontend (localhost:3000) ]
+               |
+               | HTTP + JSON + JWT
+               v
+[ Spring Boot REST API (localhost:8080) ]
+  |- Security Layer (JWT Filter, Role Guards)
+  |- Controller Layer (Auth, Products, Cart, Orders, Admin)
+  |- Service Layer (Business Rules, Transactions)
+  |- Repository Layer (Spring Data JPA)
+               |
+               v
+[ MySQL Database ]
+  |- users, products, categories
+  |- cart, cart_item
+  |- orders, order_item
+```
+
+### Layered Architecture
+
+| Layer | Responsibility |
+|------|----------------|
+| Frontend (React) | UI rendering, routing, role-based pages, API integration via Axios |
+| API Controllers | Expose REST endpoints for auth, catalog, cart, orders, vendor, admin |
+| Service Layer | Core business logic (approval flow, ownership checks, stock checks, order placement) |
+| Repository Layer | Data access using Spring Data JPA and pagination/search queries |
+| Security Layer | JWT authentication, stateless sessions, role-based authorization |
+| Database | Persistent storage for users, products, cart, and orders |
+
+### Role Workflow Architecture
+
+| Role | Workflow |
+|------|----------|
+| CUSTOMER | Browse approved products → add to cart → place order |
+| VENDOR | Create/update products → product status set to pending |
+| ADMIN | View pending products → approve products → view all orders |
+
+---
+
+>>>>>>> 208360e6 (Added Admin Role)
 ## Project Structure
 
 ```

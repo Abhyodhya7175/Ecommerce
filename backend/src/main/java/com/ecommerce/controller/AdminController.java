@@ -30,6 +30,18 @@ public class AdminController {
         return ResponseEntity.ok(productService.approveProduct(id));
     }
 
+    @GetMapping("/products")
+    public ResponseEntity<Page<ProductDto>> getAllProducts(
+            @RequestParam(defaultValue = "") String search,
+            @RequestParam(required = false) Boolean approved,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size,
+            @RequestParam(defaultValue = "id") String sortBy,
+            @RequestParam(defaultValue = "desc") String sortDir
+    ) {
+        return ResponseEntity.ok(productService.getAdminProducts(search, approved, page, size, sortBy, sortDir));
+    }
+
     @GetMapping("/orders")
     public ResponseEntity<Page<OrderDto>> getAllOrders(
             @RequestParam(defaultValue = "0") int page,

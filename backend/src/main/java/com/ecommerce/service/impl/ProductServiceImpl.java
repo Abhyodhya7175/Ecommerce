@@ -49,6 +49,20 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public Page<ProductDto> getAdminProducts(String search, Boolean approved, int page, int size, String sortBy, String sortDir) {
+        Sort.Direction direction = "asc".equalsIgnoreCase(sortDir) ? Sort.Direction.ASC : Sort.Direction.DESC;
+        Pageable pageable = PageRequest.of(page, size, Sort.by(direction, sortBy));
+        String term = search == null ? "" : search;
+
+        if (approved == null) {
+            return productRepository.findByNameContainingIgnoreCase(term, pageable).map(this::toDto);
+        }
+
+        return productRepository.findByApprovedAndNameContainingIgnoreCase(approved, term, pageable)
+                .map(this::toDto);
+    }
+
+    @Override
     public Page<ProductDto> getVendorProducts(String email, int page, int size, String sortBy) {
         User vendor = getVendorByEmail(email);
         Pageable pageable = PageRequest.of(page, size, Sort.by(sortBy));

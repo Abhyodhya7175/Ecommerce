@@ -19,3 +19,13 @@ export const createVendorProduct = async (payload) => {
   const { data } = await api.post("/vendor/products", payload);
   return data;
 };
+
+export const fetchAdminProducts = async (params) => {
+  const { data } = await api.get("/admin/products", { params });
+  return data;
+};
+
+export const approveAdminProduct = async (id) => {
+  const { data } = await api.put(`/admin/products/${id}/approve`);
+  return data;
+};
