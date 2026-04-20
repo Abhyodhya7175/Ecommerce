@@ -15,8 +15,6 @@ A full-stack marketplace built with **Spring Boot** (backend) and **React** (fro
 
 ---
 
-<<<<<<< HEAD
-=======
 ## Architecture
 
 ### High-Level Flow
@@ -60,7 +58,6 @@ A full-stack marketplace built with **Spring Boot** (backend) and **React** (fro
 
 ---
 
->>>>>>> 208360e6 (Added Admin Role)
 ## Project Structure
 
 ```
